@@ -4,7 +4,7 @@ pipeline {
         stage ('Call API'){
             steps{
                 script{
-                    sh "curl -i -H \"Authorization: token bd8015227867c497121b985b9477ba3624d13c65\" https://github.com/api/v3/users/defunkt" 
+                    sh "curl -i -H \"Authorization: token 9550fd0cfae8425872af3a8033a26c9864fe4ecc\" https://github.com/api/v3/users/defunkt" 
                 }
             }
         }
