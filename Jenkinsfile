@@ -8,7 +8,7 @@ pipeline {
             steps{
                 script {
                         withCredentials([usernamePassword(credentialsId: 'GitHubID', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]){
-                            out = script.sh (
+                            out = sh (
                             script: "curl -i -H \"Authorization: token $PASSWORD\" https://api.github.com/users/imran-kkz",
                             returnStdout: true
                             )
