@@ -1,6 +1,7 @@
 import groovy.json.JsonSlurper
 
 def config =[:]
+
 pipeline {
     agent any
     stages {
@@ -18,8 +19,7 @@ pipeline {
                 script{
                 def jsonParse = null
                 jsonParse = new JsonSlurper().parseText(config.OUTPUT)
-                def output = jsonParse.body
-                echo output
+                echo jsonParse.body
                 }
             }
         }
