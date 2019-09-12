@@ -8,9 +8,10 @@ pipeline {
         stage ('Call API'){
             steps{
                 withCredentials([usernamePassword(credentialsId: 'GitHubID', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]){
-                    script{
-                        config.OUTPUT = sh "curl -i -H \"Authorization: token $PASSWORD\" https://api.github.com/users/imran-kkz" 
-                    }
+                        config.OUTPUT = script.sh (
+                        script: "curl -i -H \"Authorization: token $PASSWORD\" https://api.github.com/users/imran-kkz" 
+                        returnStdout: true
+                    )
                 }
             }
         }
