@@ -19,7 +19,7 @@ pipeline {
                 script{
                 def jsonParse = null
                 jsonParse = new JsonSlurper().parseText(config.OUTPUT)
-                echo jsonParse.body
+                echo jsonParse.name
                 }
             }
         }
