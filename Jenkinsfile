@@ -1,14 +1,13 @@
 import groovy.json.JsonSlurper
 
-def config =[:]
-
+def out
 pipeline {
     agent any
     stages {
         stage ('Call API'){
             steps{
                 withCredentials([usernamePassword(credentialsId: 'GitHubID', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]){
-                        def configOUTPUT = script.sh (
+                        out = script.sh (
                         script: "curl -i -H \"Authorization: token $PASSWORD\" https://api.github.com/users/imran-kkz",
                         returnStdout: true
                     )
@@ -19,7 +18,7 @@ pipeline {
             steps{
                 script{
                 def jsonParse = null
-                jsonParse = new JsonSlurper().parseText(config.OUTPUT)
+                jsonParse = new JsonSlurper().parseText(out)
                 echo jsonParse.name
                 }
             }
