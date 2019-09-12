@@ -14,10 +14,12 @@ pipeline {
         }
         stage ('Parse API Call'){
             steps{
+                script{
                 def jsonParse = null
                 jsonParse = new JsonSlurper().parseText(config.OUTPUT)
                 def output = jsonParse.body
                 echo output
+                }
             }
         }
     }
