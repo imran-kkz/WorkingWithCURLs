@@ -9,7 +9,7 @@ pipeline {
                 script {
                         withCredentials([usernamePassword(credentialsId: 'GitHubID', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]){
                             out = sh (
-                            script: "curl -i -H \"Authorization: token $PASSWORD\" https://api.github.com/users/imran-kkz",
+                            script: "curl -H \"Authorization: token $PASSWORD\" https://api.github.com/users/imran-kkz",
                             returnStdout: true
                             )
                         }
