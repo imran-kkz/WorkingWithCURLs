@@ -1,5 +1,6 @@
 import groovy.json.JsonSlurper
 
+def config =[:]
 pipeline {
     agent any
     stages {
