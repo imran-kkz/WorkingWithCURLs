@@ -6,14 +6,16 @@ pipeline {
     stages {
         stage ('Call API'){
             steps{
-                withCredentials([usernamePassword(credentialsId: 'GitHubID', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]){
-                        out = script.sh (
-                        script: "curl -i -H \"Authorization: token $PASSWORD\" https://api.github.com/users/imran-kkz",
-                        returnStdout: true
-                    )
+                script {
+                        withCredentials([usernamePassword(credentialsId: 'GitHubID', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]){
+                            out = script.sh (
+                            script: "curl -i -H \"Authorization: token $PASSWORD\" https://api.github.com/users/imran-kkz",
+                            returnStdout: true
+                            )
+                        }
+                    }
                 }
             }
-        }
         stage ('Parse API Call'){
             steps{
                 script{
