@@ -14,6 +14,7 @@ pipeline {
                             returnStdout: true
                             )
                         }
+                        echo out
                     }
                 }
             }
