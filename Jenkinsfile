@@ -23,8 +23,8 @@ pipeline {
                 script{
                 def jsonParse = null
                 jsonParse = new JsonSlurper().parseText(out)
-                echo jsonParse.user[]
-                echo jsonParse.body[]
+                echo jsonParse.user.toString()
+                echo jsonParse.body.toString()
                 }
             }
         }
